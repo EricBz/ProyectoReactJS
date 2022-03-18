@@ -1,0 +1,43 @@
+.navEstilo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: double 2px grey;
+  }
+ 
+  ul {
+   flex-direction: row;
+   list-style-type: none;
+
+  }
+
+  li {
+    display: inline-block;
+    background-image: linear-gradient(to top, grey, black);
+    padding: 15px 15px;
+    margin: 0px 100px 0px 100px;
+    border-radius: 15px;
+    
+  }
+
+  .navEstilo ul li a {
+    text-decoration: none;
+    color: rgb(243, 187, 82);
+    display: inline;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .logoEstilo {
+    width: 100px;
+    border-radius: 60%;
+    border: solid 3px orange;
+  }
+
+   h1 {
+    display: block;
+    background: linear-gradient(to top, grey, black);
+    text-align: center;
+  }
