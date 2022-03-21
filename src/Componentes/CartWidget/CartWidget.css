@@ -1,0 +1,10 @@
+.logoEstilo {
+    width: 100px;
+    border-radius: 60%;
+    border: solid 3px orange;
+  }
+
+   .titulonav {
+    display: block;
+    background: linear-gradient(to top, grey, black);
+  }

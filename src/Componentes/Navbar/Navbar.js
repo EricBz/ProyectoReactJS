@@ -1,22 +1,22 @@
 import "./Navbar.css";
-import CartWidget from "../CartWidget.js";
-import logo from "./logo.jpg";
+import CartWidget from "../CartWidget/CartWidget.js";
+
 
 function Navbar() {
     return (
       <div>
         <div>
-         <img className="logoEstilo" src={logo} alt="logo"></img>
-         <h1 className="titulonav">CompuStore</h1>
+        
          </div>
         <nav className="navEstilo">
+        <CartWidget/>
           <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Pcs</a></li>
-              <li><a href="#">Portátiles</a></li>
+              <li><a href="../../index.js">Home</a></li>
+              <li><a href="../../index.js">Pcs</a></li>
+              <li><a href="../../index.js">Portátiles</a></li>
           </ul>
         </nav>
-        <CartWidget/>
+        
       </div>
     );
   }
