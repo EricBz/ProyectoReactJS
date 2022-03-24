@@ -8,3 +8,20 @@
     display: block;
     background: linear-gradient(to top, grey, black);
   }
+
+  .carrito {
+    width: 80%;
+  }
+
+  .bloqueCarrito {
+    background-color: beige;
+    color: black;
+    width: 100px;
+    border-radius: 10px;
+    margin: auto;
+    border: solid 2px black;
+  }
+
+  .bloqueCarritoCentrado {
+    background-color: orange;
+  }

@@ -1,0 +1,25 @@
+.divContador {
+    padding: 10px;
+    background-color: black;
+}
+
+.contadorBotonAgregar {
+    padding: 5px 10px 5px 10px;
+}
+
+.contadorBotonEstilo {
+    padding: 0px 20px 0px 20px;
+}
+
+.contenedorContadorBotones {
+    width: 20%;
+    border-radius: 10px;
+    text-align: center;
+    border: solid 1px white;
+    background-color: rgb(255, 166, 0);
+    margin: auto;
+}
+
+.contenedorContadorCentrado {
+    background-image: linear-gradient(to top, black, rgba(128, 128, 128, 0.432));
+}
