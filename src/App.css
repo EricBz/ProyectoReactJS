@@ -19,3 +19,23 @@
   color: #61dafb;
 }
 
+.imagenCards {
+  width: 200px;
+  background-color: black;
+  border: solid 2px black;
+}
+
+.contenedorCards {
+  background-color: rgb(197, 197, 42);
+  width: 25%;
+  border-radius: 10px;
+  border: solid 2px white;
+  text-align: center;
+}
+
+.contenedorPadreCards {
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
