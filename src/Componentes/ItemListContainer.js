@@ -1,34 +1,60 @@
-import ItemCount from "./ItemCount/ItemCount.js"
-import { getProducts } from "./Item/Item.js"
-import { useState, useEffect } from 'react'
-import "../App.css"
 
-const ItemListContainer = ({greeting}) => {
-    const onAdd = (Quantity) => console.log(Quantity)
+import { getProducts, getProductsByCategory } from "./AsyncMock/AsyncMock"
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import "../App.css";
+import ItemList from "./ItemList/ItemList";
 
+ const ItemListContainer = ()=> {
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    const { categoryId } = useParams()
 
     useEffect(() => {
-        getProducts().then(response => {
-            setProducts(response)
-        })
-    }, [])
+        if(categoryId) {
+            setLoading(true)
 
- //   console.log(products)
+            getProductsByCategory(categoryId).then(items => {
+                setProducts(items)
+            }).catch(err => {
+                console.log(err)
+            }).finally(() => {
+                setLoading(false)
+            })
+        } else {
+            setLoading(true)
+
+            getProducts().then(item => {
+                setProducts(item)
+            }).catch(err  => {
+                console.log(err)
+            }).finally(() => {
+                setLoading(false)
+            })
+        }  
+
+        return (() => {
+            setProducts([])
+        })          
+    }, [categoryId])
+
+    if(loading) {
+        return <p>Cargando productos...</p>
+    }
+
+    if(products.length === 0) {
+        return <p>No hay productos de esta categoria</p>
+    }
+    
     return (
         <div>
-           
-            <h1>{greeting}</h1>
-          <div className="contenedorPadreCards">
-                {products.map(product => <div className="contenedorCards" key={product.id}><p>{product.name}</p><div><img className="imagenCards" src={product.img} alt=""/></div><p>{"$"+product.price}</p><p>{product.descripcion}</p>
-                <div>
-                <ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>
-                </div>
-                </div>)}
-                </div>
-            </div>
-            
-    )
+            <ItemList products={products}/>
+        </div>
+    )    
+    
 }
+
+
 
 export default ItemListContainer 

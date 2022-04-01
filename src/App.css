@@ -27,10 +27,14 @@
 
 .contenedorCards {
   background-color: rgb(197, 197, 42);
-  width: 25%;
+  width: 100%;
   border-radius: 10px;
   border: solid 2px white;
   text-align: center;
+}
+
+.contenedorExternoMargen{
+  margin: 100px 100px 0px 100px;
 }
 
 .contenedorPadreCards {
@@ -38,4 +42,29 @@
   direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.ContenedorDetalle{
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.contenedorNomrbreImgDetalle{
+  border: solid 2px white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.imagenDetalle {
+  width: 400px;
+}
+
+.ContenedorContadorDetail{
+  width: 300px;
+}
+
+.contenedorDetalle{
+  width: 600px;
 }
