@@ -3,12 +3,13 @@ import Navbar from "./Componentes/Navbar/Navbar.js";
 import ItemListContainer from './Componentes/ItemListContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './Componentes/ItemDetailContainer/ItemDetailContainer.js';
+
 /*va entre header y browser <ItemListContainer greeting="Bienvenidos."/>*/
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-       
         <BrowserRouter>
         <Navbar/>
         <Routes>

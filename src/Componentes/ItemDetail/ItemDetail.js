@@ -12,10 +12,11 @@ const ItemDetail = ({ id, img, name, descripcion, price, detalle, stock }) => {
                           <span>Precio = $ {price}</span></p>
                           <img className="imagenDetalle" src={img} alt='product'/><br/>
                         </div>
+                        <div>
                       <div className="contenedorDetalle" >{detalle}</div>
                       <div className="ContenedorContadorDetail">
                       <ItemCount initial={1} stock={stock} onAdd={(Quantity)=> console.log(Quantity)}/>
-                      </div>
+                      </div></div>
                     </div> 
                     </div> 
             )

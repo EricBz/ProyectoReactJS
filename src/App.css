@@ -31,10 +31,12 @@
   border-radius: 10px;
   border: solid 2px white;
   text-align: center;
+  margin: 10px 0px 10px 0px;
 }
 
 .contenedorExternoMargen{
   margin: 100px 100px 0px 100px;
+  background-image: linear-gradient(to top, grey, black);
 }
 
 .contenedorPadreCards {
@@ -42,6 +44,7 @@
   direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 100px 200px 0px 200px;
 }
 
 .ContenedorDetalle{
@@ -63,8 +66,10 @@
 
 .ContenedorContadorDetail{
   width: 300px;
+  margin: auto;
 }
 
 .contenedorDetalle{
   width: 600px;
+  margin-bottom: 100px;
 }

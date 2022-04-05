@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     border: double 2px grey;
+    background-image: linear-gradient(to top, grey, black); 
   }
  
   ul {
