@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import "./ItemCount.css"
 
-const ItemCount = ({ initial = 0, stock, onAdd}) => {
-    const [count, setCount] = useState(initial)
 
+    const ItemCount = ({initial = 0, stock, onAdd }) => {
+        
+        const [count, setCount] = useState(initial)
 
     const increment = () => {
-        if(count < stock) {
-            setCount(count + 1)
-        }
+        if (count < stock ) {
+       setCount(count + 1)
+    }
     }
     const decrement = () => {
         if (count > 0) {
@@ -16,6 +17,8 @@ const ItemCount = ({ initial = 0, stock, onAdd}) => {
     } else {console.log("No puede restar menos que 0")}
     }
 
+
+//<button className='contadorBotonAgregar' onClick={() => onAdd(count)}>Agregar al carrito</button>
     return(
         <div className='contenedorContadorCentrado'>
         <div className='contenedorContadorBotones'>
@@ -26,8 +29,7 @@ const ItemCount = ({ initial = 0, stock, onAdd}) => {
             <button className='contadorBotonEstilo' onClick={decrement}>-</button>
             <button className='contadorBotonEstilo' onClick={increment}>+</button>
             </div>
-
-            <button className='contadorBotonAgregar' onClick={() => onAdd(count)}>Agregar al carrito</button>
+            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
         </div>
         </div>
     )

@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
             <ItemDetail {...product} />
         </div>
     )
-
+//Propiedades del array que luego utiliza Itemdetail para mostrar, e incluso usar valores de stock y demas.
 }
 
 export default ItemDetailContainer

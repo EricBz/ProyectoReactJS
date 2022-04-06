@@ -34,5 +34,3 @@ export const getProductById = (id) => {
     })
 }
 /*Parseint para que tome los valores del id y los pase a valor numerico*/
-
-

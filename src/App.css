@@ -73,3 +73,13 @@
   width: 600px;
   margin-bottom: 100px;
 }
+
+.botonIrAlCarrito{
+  text-decoration: none;
+  background-color: orange;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px yellow;
+  padding: 5px;
+  margin: auto;
+}
