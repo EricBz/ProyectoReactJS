@@ -10,27 +10,20 @@ const products = [
     { id: 8, name: "Disco rígido", price: 8000, img:"https://www.compusyspy.com/wp-content/uploads/2020/10/250samsung.jpg", stock: 12, descripcion: "Disco rígido de 1 TB", category: "notebook", detalle: "Disco rígido para notebooks de 1 TB de capacidad, conexión SATA."},
 ]
 
-export const getProducts = () => {
+export const getProducts = (category) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(products)
-        }, 2000)
+            category ? resolve(products.filter(prod => prod.category === category)) : resolve(products)
+        }, 1000)
     })
 }
 
-export const getProductsByCategory = (categoryId) => {
+export const getProductById = (id) =>{
     return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(products.filter(prod => prod.category === categoryId))
-        }, 2000)
-    })
-}
-
-export const getProductById = (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
+        setTimeout(()=>{
             resolve(products.find(prod => prod.id === parseInt(id)))
-        }, 2000)
+        }, 1000)
     })
 }
+
 /*Parseint para que tome los valores del id y los pase a valor numerico*/

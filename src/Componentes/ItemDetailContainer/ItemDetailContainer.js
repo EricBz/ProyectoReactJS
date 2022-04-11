@@ -3,24 +3,35 @@ import { getProductById } from '../AsyncMock/AsyncMock'
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams } from 'react-router-dom'
 
-/*{...product} desestructura todas las prop. Prams es la que trae los ids, ya que se saca de las urls*/
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({addToCart, cart}) => {
     const [product, setProduct] = useState()
-//no se usa array porqe es un solo produco
-    const { id } = useParams()
+    const [loading, setLoading] = useState(true)
+
+    const { productId } = useParams()
 
     useEffect(() => {
-        getProductById(id).then(prod => {
+        setLoading(true)
+
+        getProductById(productId).then(prod => {
             setProduct(prod)
+        }).catch(error => {
+            console.log(error)
+        }).finally(() => {
+            setLoading(false)
         })
-    }, [id])
+
+    }, [productId])
+    
+
+    if(loading) {
+        return <h1>Cargando...</h1>
+    }
 
     return(
-        <div>
-            <ItemDetail {...product} />
+        <div className='ItemDetailContainer'>
+            <ItemDetail {...product} addToCart={addToCart} cart={cart}/>
         </div>
     )
-//Propiedades del array que luego utiliza Itemdetail para mostrar, e incluso usar valores de stock y demas.
 }
 
 export default ItemDetailContainer

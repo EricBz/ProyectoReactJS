@@ -83,3 +83,49 @@
   padding: 5px;
   margin: auto;
 }
+
+.bloqueCart {
+  color: white;
+}
+
+.bloqueTabla {
+  margin: auto;
+  width: 90%;
+  margin-top: 50px;
+}
+
+.botonesTabla {
+  padding: 10px;
+  color: azure;
+  background-color: rgb(151, 120, 61);
+  border: solid 1px yellow;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.botonesTablaPagar {
+  padding: 10px 100px 10px 100px;
+  color: azure;
+  background-color: rgb(151, 120, 61);
+  border: solid 1px yellow;
+  border-radius: 10px;
+}
+
+.bloqueBotonPagar {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.linkContinuarComprando {
+  text-decoration: none;
+  background-color: orange;
+  color: aliceblue;
+  border: solid 1px red;
+  padding: 5px 20px 5px 20px;
+  border-radius: 10px;
+}
+
+.bloqueLinkContinuar {
+  text-align: center;
+  margin-top: 30px;
+}
