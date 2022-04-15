@@ -1,4 +1,3 @@
-import logo from "./logo.jpg";
 import "./CartWidget.css"
 import carrito from "./carrito.png"
 import { useContext } from 'react';
@@ -8,10 +7,10 @@ import CartContext from '../context/CartContext'
 const CartWidget = () => {
 
     const { getQuantity } = useContext(CartContext)
+    if (getQuantity() !== 0) {
     return (
         <div>
-            <img className="logoEstilo" src={logo} alt="logo"/>
-            <h1 className="titulonav">CompuStore</h1>
+            
             <div className="bloqueCarritoCentrado">
             <div className="bloqueCarrito">
                 <Link to={'/cart'} className="CartWidget">
@@ -21,7 +20,11 @@ const CartWidget = () => {
             </div>
             </div>
         </div>
-    )
+    )} else {
+        return(
+            <></>
+        )
+    }
 }
 
 export default CartWidget
