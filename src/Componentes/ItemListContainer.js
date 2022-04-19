@@ -15,14 +15,6 @@ const ItemListContainer = () => {
     
     useEffect(() => {
         setLoading(true)
-        
-        // getProducts(categoryId).then(items => {
-        //     setProducts(items)
-        // }).catch(err  => {
-        //     console.log(err)
-        // }).finally(() => {
-        //     setLoading(false)
-        // })
 
         const collectionRef = categoryId
         ? query(collection(firestoreDb, 'products'), where('category', '==', categoryId), limit(10))

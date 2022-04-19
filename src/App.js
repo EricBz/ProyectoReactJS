@@ -5,13 +5,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './Componentes/ItemDetailContainer/ItemDetailContainer.js';
 import { CartContextProvider } from './Componentes/context/CartContext'
 import Cart from './Componentes/Cart/Cart';
-
+import { NotificationProvider } from './notification/notification'
 /*va entre header y browser <ItemListContainer greeting="Bienvenidos."/>*/
 function App() {
 
   return (
     <div className="App">
       <header className="App-header">
+      <NotificationProvider>
       <CartContextProvider>
         <BrowserRouter>
         <Navbar/>
@@ -25,7 +26,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       </CartContextProvider>
-      
+      </NotificationProvider>
       </header>
     </div>
   );

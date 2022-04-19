@@ -1,0 +1,11 @@
+.Success {
+    background-color: green;
+}
+
+.Error {
+    background-color: red;
+}
+
+.SizeLarge {
+    font-size: 40px;
+}
