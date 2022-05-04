@@ -2,8 +2,38 @@ import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget.js";
 import { Link } from 'react-router-dom';
 import logo from "../CartWidget/logo.jpg"
+import { getCategories } from '../../services/firebase' 
+//import CartContext from '.././context/CartContext'
+import { useState, useEffect } from 'react'
 
-function Navbar() {
+
+export const orderCategories = (categories) => {
+  categories.sort(function (a, b) {
+      if (a.order > b.order) {
+        return 1;
+      }
+      if (a.order < b.order) {
+        return -1;
+      }
+      return 0;
+    });
+}
+
+export const Navbar = () => {
+  const [categories, setCategories] = useState([])
+
+  //const { getQuantity } = useContext(CartContext)
+
+  useEffect(() => {
+      getCategories().then(categories => {
+          orderCategories(categories)
+          setCategories(categories)
+      }).catch(error => {
+          console.log(error)
+      })
+  }, [])
+
+
     return (
       <div>
         <nav className="navEstilo">
@@ -12,8 +42,15 @@ function Navbar() {
         <CartWidget/>
           <ul>
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/category/pcs'>Pcs</Link></li>
-            <li><Link to='/category/portatiles'>Portátiles</Link></li>
+            {
+                  categories.map(cat => 
+                    <li key={cat.id}><Link 
+                           
+                          to={`/category/${cat.id}`} 
+                      >
+                          {cat.description}
+                      </Link></li>)
+              }
           </ul>
         </nav>
         

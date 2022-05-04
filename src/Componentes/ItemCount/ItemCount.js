@@ -18,7 +18,7 @@ import "./ItemCount.css"
     }
 
 
-//<button className='contadorBotonAgregar' onClick={() => onAdd(count)}>Agregar al carrito</button>
+
     return(
         <div className='contenedorContadorCentrado'>
         <div className='contenedorContadorBotones'>

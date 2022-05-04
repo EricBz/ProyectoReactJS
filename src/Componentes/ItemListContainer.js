@@ -1,4 +1,4 @@
-//import { getProducts } from "./AsyncMock/AsyncMock"
+
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import "../App.css";
@@ -21,7 +21,7 @@ const ItemListContainer = () => {
         : collection(firestoreDb, 'products')
 
         getDocs(collectionRef).then(querySnapshot => {
-            console.log(querySnapshot.size)
+            
             const products = querySnapshot.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
             })

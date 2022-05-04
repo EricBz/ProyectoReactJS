@@ -4,26 +4,32 @@ import { Link } from 'react-router-dom'
 import "../../App.css"
 import { createOrderAndUpdateStock } from '../../services/firebase'
 import { useNotification } from '../../notification/notification'
+import { serverTimestamp } from 'firebase/firestore';
+
 
 
 const Cart = () => {
-    const [loading, setLoading] = useState(false)
-    const { cart, clearCart, getPrice, removeItem, getQuantity } = useContext(CartContext)
+    const [client, setClient] = useState({ name: '', phone: '', email: '' })
     const { setNotification } = useNotification()
+    const { cart, getPrice, clearCart, removeItem, getQuantity } = useContext(CartContext)
+    const [loading, setLoading] = useState(false)
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setClient({
+        ...client,
+        [name]: value
+      })
+    }
     const createOrder = () => {
-        setLoading(true)
-
-        const objOrder = {
-            buyer: {
-                name: 'Eric',
-                phone: '123456789',
-                email: 'eric@prueba.com'
-            },
-            items: cart,
-            total: getPrice()
-        }
-
-
+      const objOrder = {
+        client,
+        items: cart,
+        date: serverTimestamp(),
+        total: getPrice()
+      }
+  
+      if (client.name && client.phone && client.email) {
         createOrderAndUpdateStock(cart, objOrder).then(id => {
             clearCart()
             setNotification('success', `La orden se genero correctamente, su codigo es: ${id}`)
@@ -39,39 +45,57 @@ const Cart = () => {
             setLoading(false)
         })
     }
+    else {
+        setNotification(' ', `Por favor complete sus datos correctamente`)
+      } 
+    }  
 
-
-    if (getQuantity() !== 0 ) {
-    return (
-        <div className="bloqueCart">
+  return (
+    <section >
             
-            <h1>Compras</h1>
-            
-            <div >
-            
-                <table className="bloqueTabla">
-                    <tbody>
-                        {cart.map(prod => <tr key={prod.id}><td><b>{prod.name}</b> x {prod.quantity} unidades </td><td>{prod.price * prod.quantity}  ({prod.price} c/u)</td><td><button className="botonesTabla" onClick={() => { removeItem(prod.id) }}> Eliminar unidad</button></td></tr>)}
-                        <tr><th>Total a pagar</th>
-                            <th>{getPrice()} </th>
-                            <th><button className="botonesTabla" onClick={clearCart}>Vaciar carrito</button></th>
-                            </tr>
-                            </tbody>       
-                </table>
-                <div className="bloqueBotonPagar">
-                <button onClick={createOrder} className="botonesTablaPagar">Terminar mi compra</button>
-                </div>   
-                
-            </div>
-        </div>
-    )} else {
-        return(
-        <div className="bloqueLinkContinuar">Si desea ver nuestro catálogo...
-         
-                <Link to={'/'} className="linkContinuarComprando">Continuar comprando</Link>
+            {cart.map(prod => (
+                <div key={prod.id} className="bloqueTabla">
+                    <div >
+                      <div key={prod.id}>
+                          <h5 >{prod.name}</h5>
+                          <div >
+                              <p >{prod.quantity} x ${prod.price}</p>
+                              <p>Total Parcial : ${prod.quantity * prod.price}</p>
+                          </div> 
+                          <button className="botonesTabla" onClick={() => removeItem(prod.id)} >
+                              Eliminar unidad del producto
+                          </button>
+                      </div>
+                    </div> 
+                </div> 
+            ))}
+                <div className="bloqueTabla">
+                    {getPrice() === 0
+                     ? null 
+                     : <h4>Precio total: ${getPrice()}</h4>}
+                    {getQuantity() === 0 
+                    ? <div>
+                        <Link to={'/'} className="linkContinuarComprando">Continuar comprando</Link> 
+                      </div> 
+                    : <div><button className="botonesTabla" onClick={() => { clearCart() }} >Vaciar Carrito</button>
+                    <Link to={'/'} className="botonesTablaAgregar">Agregar productos</Link></div>}
                 </div>
-        )
-    }
+                {getQuantity() > 0 ?
+                <div className="bloqueTabla">
+                    <p>Datos para la compra</p>
+                    <form>
+                        <div>
+                            <label htmlFor="name">Nombre</label>
+                            <input value={client.name} name="name"  type="text" id="nombre" onChange={handleChange} />
+                            <label htmlFor="phone">Teléfono</label>
+                            <input value={client.phone} name="phone" id="telefono"  type="number" onChange={handleChange} />
+                            <label htmlFor="email">Email</label>
+                            <input value={client.email} name="email" id="email" type="email"  onChange={handleChange} />
+                        </div>
+                    </form>
+                    <button className="botonesTablaPagar" onClick={() => createOrder()}>Finalizar Compra</button></div> : null}
+        </section>
+  )
 }
-
 export default Cart
+

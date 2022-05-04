@@ -6,7 +6,7 @@ import ItemDetailContainer from './Componentes/ItemDetailContainer/ItemDetailCon
 import { CartContextProvider } from './Componentes/context/CartContext'
 import Cart from './Componentes/Cart/Cart';
 import { NotificationProvider } from './notification/notification'
-/*va entre header y browser <ItemListContainer greeting="Bienvenidos."/>*/
+
 function App() {
 
   return (

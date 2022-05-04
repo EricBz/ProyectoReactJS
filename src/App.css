@@ -95,6 +95,7 @@
   background-image:  linear-gradient(to top, rgba(0, 0, 255, 0.5), black);
   border-radius: 10px;
   padding: 10px;
+  text-align: center;
 }
 
 .botonesTabla {
@@ -138,4 +139,15 @@
   background-attachment: fixed;
   background-position: center;
   background-size: cover; 
+}
+
+.botonesTablaAgregar{
+  padding: 3px;
+  color: azure;
+  background-color: rgb(151, 120, 61);
+  border: solid 1px yellow;
+  border-radius: 10px;
+  margin-top: 30px;
+  text-decoration: none;
+  margin-left: 50px;
 }

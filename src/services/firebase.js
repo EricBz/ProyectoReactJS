@@ -1,9 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
-import { 
-  getDocs, collection, query, where, writeBatch, documentId, addDoc, Timestamp 
-} from 'firebase/firestore' 
+import { getDocs, collection, query, where, writeBatch, documentId, addDoc, Timestamp } from 'firebase/firestore' 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -61,4 +59,31 @@ export const createOrderAndUpdateStock = (cart, objOrder) => {
               resolve(error)
           })
   })
+}
+
+
+const createAdaptedCategory = (doc) => {
+    const data = doc.data()
+
+    const formattedCategory = {
+        id: doc.id,
+        description: data.description,
+        order: data.order
+    }
+
+    return formattedCategory
+}
+export const getCategories = () => {
+    return new Promise((resolve, reject) => {
+        const collectionRef = collection(firestoreDb, 'categories')
+
+      getDocs(collectionRef).then(querySnapshot => {
+        const categories = querySnapshot.docs.map(doc => {
+            return createAdaptedCategory(doc)
+        })
+        resolve(categories)
+        }).catch(error => {
+            reject(error)
+        })
+    })
 }
